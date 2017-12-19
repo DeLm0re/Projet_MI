@@ -58,7 +58,7 @@ public class NombreComplexe
     public double argument()
     {
         if(partieReelle == 0 && partieImaginaire == 0)
-            throw new ArithmeticException(); //0 n'a pas d'argument!
+            throw new IllegalArgumentException("0 ne peut pas avoir d'argument.");
         if(partieReelle<0 && partieImaginaire==0)
             return PI; //l'argument d'un nombre réel négatif est toujours pi. Gérer ce cas séparément permet d'éviter une division par zéro.
         else
@@ -77,15 +77,23 @@ public class NombreComplexe
         if(partieReelle != 0)
         {
             valeur += formatter.format(partieReelle);
+            if(partieImaginaire != 0)
+            {
+                if (partieImaginaire > 0)
+                    valeur += "+";
+                if (partieImaginaire < 0)
+                    valeur += "-";
+                if(abs(partieImaginaire) != 1)
+                    valeur += formatter.format(abs(partieImaginaire));
+                valeur += "i";
+            }
         }
-        if(partieImaginaire != 0)
+        else if(partieImaginaire != 0)
         {
-            if(partieImaginaire > 0)
-                valeur += " + ";
-            if(partieImaginaire < 0)
-                valeur += " - ";
             if(abs(partieImaginaire) != 1)
-                valeur += formatter.format(abs(partieImaginaire));
+                valeur += formatter.format(partieImaginaire);
+            else if (partieImaginaire < 0)
+                valeur += "-";
             valeur += "i";
         }
         return valeur;
@@ -100,9 +108,25 @@ public class NombreComplexe
             valeur = "0";
             return valeur;
         }
-        valeur += formatter.format(module());
-        if(partieImaginaire != 0)
-            valeur += ("*e^(i*"+formatter.format(argument())+")");
+        if(module() == 1) //module unitaire
+        {
+            if(partieImaginaire == 0) //1
+            {
+                valeur = "1";
+            }
+            else //nombre complexe du cercle trigonométrique
+            {
+                valeur += "e^(" + formatter.format(argument()) + "i)";
+            }
+        }
+        else //module non unitaire
+        {
+            valeur = formatter.format(module());
+            if(partieImaginaire != 0) //nombre complexe différent de 1
+            {
+                valeur += "*e^(" + formatter.format(argument()) + "i)";
+            }
+        }
         return valeur;
     }
 }
