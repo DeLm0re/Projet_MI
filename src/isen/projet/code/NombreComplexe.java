@@ -77,15 +77,23 @@ public class NombreComplexe
         if(partieReelle != 0)
         {
             valeur += formatter.format(partieReelle);
+            if(partieImaginaire != 0)
+            {
+                if (partieImaginaire > 0)
+                    valeur += " + ";
+                if (partieImaginaire < 0)
+                    valeur += " - ";
+                if(abs(partieImaginaire) != 1)
+                    valeur += formatter.format(abs(partieImaginaire));
+                valeur += "i";
+            }
         }
-        if(partieImaginaire != 0)
+        else if(partieImaginaire != 0)
         {
-            if(partieImaginaire > 0)
-                valeur += " + ";
-            if(partieImaginaire < 0)
-                valeur += " - ";
             if(abs(partieImaginaire) != 1)
-                valeur += formatter.format(abs(partieImaginaire));
+                valeur += formatter.format(partieImaginaire);
+            else if (partieImaginaire < 0)
+                valeur += "-";
             valeur += "i";
         }
         return valeur;
