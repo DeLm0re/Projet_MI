@@ -7,25 +7,27 @@ import static java.lang.Math.*;
 
 public class NombreComplexe
 {
-    private double partieEntiere;
+    private double partieReelle;
     private double partieImaginaire;
 
-    NombreComplexe(double partieEntiere, double partieImaginaire)
+    public NombreComplexe(double partieReelle, double partieImaginaire)
     {
-
+        this.partieReelle=partieReelle;
+        this.partieImaginaire=partieImaginaire;
     }
 
-    NombreComplexe()
+    public NombreComplexe()
     {
-
+        this.partieReelle=0;
+        this.partieImaginaire=0;
     }
 
-    public double getPartieEntiere() {
-        return partieEntiere;
+    public double getPartieReelle() {
+        return partieReelle;
     }
 
-    public void setPartieEntiere(double partieEntiere) {
-        this.partieEntiere = partieEntiere;
+    public void setPartieReelle(double partieReelle) {
+        this.partieReelle = partieReelle;
     }
 
     public double getPartieImaginaire() {
@@ -38,32 +40,69 @@ public class NombreComplexe
 
     public void setNombreComplexe(NombreComplexe z)
     {
-        this.partieEntiere = z.getPartieEntiere();
+        this.partieReelle = z.getPartieReelle();
         this.partieImaginaire = z.getPartieImaginaire();
     }
 
     public NombreComplexe conjugue()
     {
-        return null;
+        NombreComplexe zs = new NombreComplexe(partieReelle,-partieImaginaire);
+        return zs;
     }
 
     public double module()
     {
-        return 0;
+        return sqrt(partieReelle*partieReelle + partieImaginaire*partieImaginaire);
     }
 
     public double argument()
     {
-        return 0;
+        if(partieReelle == 0 && partieImaginaire == 0)
+            throw new ArithmeticException(); //0 n'a pas d'argument!
+        if(partieReelle<0 && partieImaginaire==0)
+            return PI; //l'argument d'un nombre réel négatif est toujours pi. Gérer ce cas séparément permet d'éviter une division par zéro.
+        else
+            return 2*atan(partieImaginaire/(partieReelle + module()));
     }
 
     public String toString()
     {
-        return null;
+        String valeur = "";
+        NumberFormat formatter = new DecimalFormat("##.###"); //permet d'éviter les virgules non nécessaires
+        if(partieReelle == 0 && partieImaginaire == 0)
+        {
+            valeur = "0";
+            return valeur;
+        }
+        if(partieReelle != 0)
+        {
+            valeur += formatter.format(partieReelle);
+        }
+        if(partieImaginaire != 0)
+        {
+            if(partieImaginaire > 0)
+                valeur += " + ";
+            if(partieImaginaire < 0)
+                valeur += " - ";
+            if(abs(partieImaginaire) != 1)
+                valeur += formatter.format(abs(partieImaginaire));
+            valeur += "i";
+        }
+        return valeur;
     }
 
     public String formeExponentielle()
     {
-        return null;
+        String valeur = "";
+        NumberFormat formatter = new DecimalFormat("##.###"); //permet d'éviter les virgules non nécessaires
+        if(partieReelle == 0 && partieImaginaire == 0)
+        {
+            valeur = "0";
+            return valeur;
+        }
+        valeur += formatter.format(module());
+        if(partieImaginaire != 0)
+            valeur += ("*e^(i*"+formatter.format(argument())+")");
+        return valeur;
     }
 }
