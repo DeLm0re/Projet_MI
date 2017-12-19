@@ -57,7 +57,7 @@ public final class OperationComplexe
     {
         NombreComplexe zs = new NombreComplexe();
         if(module < 0)
-            throw new IllegalArgumentException("un module ne peut pas être négatif."); //un module ne peut pas être négatif
+            throw new IllegalArgumentException("Un module ne peut pas être négatif."); //un module ne peut pas être négatif
         argument = (argument+PI)%(2*PI)-PI; //on s'assure que l'argument reste entre -pi et pi
         zs.setPartieReelle(module*cos(argument));
         zs.setPartieImaginaire(module*sin(argument));
