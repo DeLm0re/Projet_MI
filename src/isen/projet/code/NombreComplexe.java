@@ -10,13 +10,13 @@ public class NombreComplexe
     private double partieReelle;
     private double partieImaginaire;
 
-    NombreComplexe(double partieReelle, double partieImaginaire)
+    public NombreComplexe(double partieReelle, double partieImaginaire)
     {
         this.partieReelle=partieReelle;
         this.partieImaginaire=partieImaginaire;
     }
 
-    NombreComplexe()
+    public NombreComplexe()
     {
         this.partieReelle=0;
         this.partieImaginaire=0;
