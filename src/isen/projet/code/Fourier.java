@@ -10,6 +10,8 @@
  */
 package isen.projet.code;
 
+import static java.lang.Math.PI;
+
 public class Fourier
 {
     private int taille;
@@ -46,7 +48,7 @@ public class Fourier
     {
         this.donnee = new Data(signal,this.getTaille());
 
-        
+        recursiveFFTr(this.donnee.getSreel());
 
         return(this.Lreel);
     }
@@ -64,6 +66,25 @@ public class Fourier
     {
         if(getTaille() == 1) {
             this.Lreel = this.donnee.getSreel();
+        }
+        else {
+            double reelPair[] = new double[taille/2];
+            double reelImpair[] = new double[taille/2];
+
+            for(int i = 0; i < taille/2; i++){
+                reelPair[i] = this.donnee.getSreel()[2*i];
+                reelImpair[i] = this.donnee.getSreel()[(2*i)+1];
+            }
+
+            recursiveFFTr(reelPair);
+            recursiveFFTr(reelImpair);
+
+            for(int k = 0; k <= (taille/2) - 1; k++){
+                double argumentM = -((2*PI*k)/taille);
+                NombreComplexe M = OperationComplexe.expoVersAlgebrique(1,argumentM);
+
+                //this.Lreel[k] = reelPair[k] + reelImpair[k] * M;
+            }
         }
     }
 
