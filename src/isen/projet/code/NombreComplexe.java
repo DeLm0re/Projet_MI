@@ -12,12 +12,14 @@ public class NombreComplexe
 
     NombreComplexe(double partieEntiere, double partieImaginaire)
     {
-
+        this.partieEntiere=partieEntiere;
+        this.partieImaginaire=partieImaginaire;
     }
 
     NombreComplexe()
     {
-
+        this.partieEntiere=0;
+        this.partieImaginaire=0;
     }
 
     public double getPartieEntiere() {
