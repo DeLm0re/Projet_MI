@@ -56,6 +56,14 @@ public final class OperationComplexe
         return zs;
     }
 
+    /**
+     * \brief    Fonction additioner
+     * \details  Cette fonction permet de calculer l'addition entre deux nombre complexes
+     *           passés en paramètre.
+     * \param    z1        Notre premier nombre complexe
+     * \param    x         Notre nombre en \e double
+     * \return   \e NombreComplexe zs, il s'agit de l'addition de nos deux nombres
+     */
     public static NombreComplexe additionner(NombreComplexe z1, double x)
     {
         NombreComplexe zs = new NombreComplexe();
@@ -80,6 +88,14 @@ public final class OperationComplexe
         return zs;
     }
 
+    /**
+     * \brief    Fonction soustraire
+     * \details  Cette fonction permet de calculer la soustraction entre deux nombre complexes
+     *           passés en paramètre.
+     * \param    z1        Notre premier nombre complexe
+     * \param    x         Notre nombre en \e double
+     * \return   \e NombreComplexe zs, il s'agit de la soustraction de z1 par x
+     */
     public static NombreComplexe soustraire(NombreComplexe z1, double x)
     {
         NombreComplexe zs = new NombreComplexe();
@@ -88,6 +104,14 @@ public final class OperationComplexe
         return zs;
     }
 
+    /**
+     * \brief    Fonction soustraire
+     * \details  Cette fonction permet de calculer la soustraction entre deux nombre complexes
+     *           passés en paramètre.
+     * \param    x         Notre nombre en \e double
+     * \param    z1        Notre premier nombre complexe
+     * \return   \e NombreComplexe zs, il s'agit de la soustraction de x par z1
+     */
     public static NombreComplexe soustraire(double x, NombreComplexe z1)
     {
         NombreComplexe zs = new NombreComplexe();
@@ -118,6 +142,14 @@ public final class OperationComplexe
         return zs;
     }
 
+    /**
+     * \brief    Fonction multiplier
+     * \details  Cette fonction permet de calculer la multiplication entre deux nombre complexes
+     *           passés en paramètre.
+     * \param    z1        Notre premier nombre complexe
+     * \param    x         Notre nombre en \e double
+     * \return   \e NombreComplexe zs, il s'agit de la multiplication de nos deux nombres
+     */
     public static NombreComplexe multiplier(NombreComplexe z1, double x)
     {
         NombreComplexe zs = new NombreComplexe();
