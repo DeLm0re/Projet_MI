@@ -44,7 +44,11 @@ public class Fourier
      */
     public double[] FFTr(int signal)
     {
-        return null;
+        this.donnee = new Data(signal,this.getTaille());
+
+        
+
+        return(this.Lreel);
     }
 
     /**
@@ -53,12 +57,14 @@ public class Fourier
      *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
      *           Elle est appelée par la fonction FFTr et permet de "descendre et remonter" dans la récursion,
      *           nécessaire pour traiter notre tableau de réels.
-     * \param    Lreel[]         Notre tableau de réels en \e double; (contient nos résultats)
+     * \param    reel[]         Notre tableau de réels en \e double; (contient nos résultats)
      * \return   \e void, il s'agit d'une fonction de calcul, donc pas de retour.
      */
-    private void recursiveFFTr(double Lreel[])
+    private void recursiveFFTr(double reel[])
     {
-
+        if(getTaille() == 1) {
+            this.Lreel = this.donnee.getSreel();
+        }
     }
 
     /**
