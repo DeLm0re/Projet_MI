@@ -91,19 +91,19 @@ class NombreComplexeTest {
     {
         NombreComplexe z = new NombreComplexe(-11, -27);
         String string = "-11-27i";
-        assertTrue(z.toString() == string, "Erreur string x et y negatifs");
+        assertTrue(z.toString().equals(string), "Erreur string x et y negatifs");
 
         z = new NombreComplexe(785, 245);
         string = "785+245i";
-        assertTrue(z.toString() == string, "Erreur string x et y positifs");
+        assertTrue(z.toString().equals(string), "Erreur string x et y positifs");
 
         z = new NombreComplexe(0, 8);
         string = "8i";
-        assertTrue(z.toString() == string, "Erreur string x nul");
+        assertTrue(z.toString().equals(string), "Erreur string x nul");
 
         z = new NombreComplexe(34, 0);
         string = "34";
-        assertTrue(z.toString() == string, "Erreur string y nul");
+        assertTrue(z.toString().equals(string), "Erreur string y nul");
 
     }
 
@@ -124,7 +124,6 @@ class NombreComplexeTest {
 
         z = new NombreComplexe(0, 4);
         string = "4*e^(1,571i)";
-        System.out.println(z.formeExponentielle());
         assertTrue(z.formeExponentielle().equals(string), "Erreur forme exponentielle x nul");
 
         z = new NombreComplexe(0, 0);

@@ -34,12 +34,6 @@ public final class OperationComplexe
         return zs;
     }
 
-    /*pour tester cette fonction:
-     * z_1 = a_1 + ib_1
-     * z_2 = a_2 + ib_2
-     * il faut que:
-     * z_1*z_2 = (a_1 + ib_1)(a_2 + ib_2) = (a_1*a_2 - b_1*b_2) + i(a_1*b_2 + b_1*a_2)
-     */
     public static NombreComplexe multiplier(NombreComplexe z1, NombreComplexe z2)
     {
         NombreComplexe zs = new NombreComplexe();
