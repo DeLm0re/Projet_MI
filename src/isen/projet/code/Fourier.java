@@ -6,7 +6,7 @@
  * \brief     La classe Fourier
  * \details   Cette classe contient nos données qui résultent des données de la classe Data.
  *            Elles sont stockées dans un tableau réel ou complexe.
- *            Cette classe a un constructeur qui initialise son attribut taille.
+ *            Cette classe a un constructeur qui initialise son attribut \e int taille.
  */
 package isen.projet.code;
 
@@ -15,7 +15,7 @@ public class Fourier
     private int taille;
     private Data donnee;
 
-    private float Lreel[];
+    private double Lreel[];
     private NombreComplexe Lcomplexe[];
 
     /**
@@ -26,7 +26,13 @@ public class Fourier
      */
     public Fourier(int taille)
     {
-        setTaille(taille);
+        if( (taille < 0) || ((taille & (taille-1)) != 0) )
+        {
+            //erreur
+        }
+        else {
+            setTaille(taille);
+        }
     }
 
     /**
@@ -34,9 +40,9 @@ public class Fourier
      * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
      *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
      * \param    signal         Notre entier représentant le signal
-     * \return   \e float[], On renvoie un tableau similaire à celui qui contient nos données à traiter.
+     * \return   \e double[], On renvoie un tableau similaire à celui qui contient nos données à traiter.
      */
-    public float[] FFTr(int signal)
+    public double[] FFTr(int signal)
     {
         return null;
     }
@@ -47,10 +53,10 @@ public class Fourier
      *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
      *           Elle est appelée par la fonction FFTr et permet de "descendre et remonter" dans la récursion,
      *           nécessaire pour traiter notre tableau de réels.
-     * \param    Lreel[]         Notre tableau de réels (contient nos résultats)
+     * \param    Lreel[]         Notre tableau de réels en \e double; (contient nos résultats)
      * \return   \e void, il s'agit d'une fonction de calcul, donc pas de retour.
      */
-    private void recursiveFFTr(float Lreel[])
+    private void recursiveFFTr(double Lreel[])
     {
 
     }
