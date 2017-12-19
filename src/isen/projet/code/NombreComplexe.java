@@ -57,8 +57,10 @@ public class NombreComplexe
 
     public double argument()
     {
+        if(partieReelle == 0 && partieImaginaire == 0)
+            throw new ArithmeticException(); //0 n'a pas d'argument!
         if(partieReelle<0 && partieImaginaire==0)
-            return PI;
+            return PI; //l'argument d'un nombre réel négatif est toujours pi. Gérer ce cas séparément permet d'éviter une division par zéro.
         else
             return 2*atan(partieImaginaire/(partieReelle + module()));
     }
