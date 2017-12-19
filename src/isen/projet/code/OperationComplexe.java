@@ -11,7 +11,7 @@ public final class OperationComplexe
     public static NombreComplexe inverse(NombreComplexe z)
     {
         if(z.getPartieReelle() == 0 && z.getPartieImaginaire() == 0)
-            throw new ArithmeticException(); //Impossible de calculer l'inverse de 0
+            throw new IllegalArgumentException("0 ne peut pas avoir d'inverse."); //Impossible de calculer l'inverse de 0
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(z.getPartieReelle()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
         zs.setPartieImaginaire(-z.getPartieImaginaire()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
@@ -57,7 +57,7 @@ public final class OperationComplexe
     {
         NombreComplexe zs = new NombreComplexe();
         if(module < 0)
-            throw new ArithmeticException(); //un module ne peut pas être négatif
+            throw new IllegalArgumentException("un module ne peut pas être négatif."); //un module ne peut pas être négatif
         argument = (argument+PI)%(2*PI)-PI; //on s'assure que l'argument reste entre -pi et pi
         zs.setPartieReelle(module*cos(argument));
         zs.setPartieImaginaire(module*sin(argument));
