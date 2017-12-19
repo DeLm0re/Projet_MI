@@ -26,7 +26,7 @@ public class NombreComplexe
         return partieReelle;
     }
 
-    public void setpartieReelle(double partieReelle) {
+    public void setPartieReelle(double partieReelle) {
         this.partieReelle = partieReelle;
     }
 
