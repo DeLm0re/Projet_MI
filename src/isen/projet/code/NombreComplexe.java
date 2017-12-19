@@ -46,17 +46,21 @@ public class NombreComplexe
 
     public NombreComplexe conjugue()
     {
-        return null;
+        NombreComplexe zs = new NombreComplexe(partieEntiere,-partieImaginaire);
+        return zs;
     }
 
     public double module()
     {
-        return 0;
+        return sqrt(partieEntiere*partieEntiere + partieImaginaire*partieImaginaire);
     }
 
     public double argument()
     {
-        return 0;
+        if(partieEntiere<0 && partieImaginaire==0)
+            return PI;
+        else
+            return 2*atan(partieImaginaire/(partieEntiere + module()));
     }
 
     public String toString()
