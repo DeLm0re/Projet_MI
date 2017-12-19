@@ -135,7 +135,7 @@ public class NombreComplexe
     public double argument()
     {
         if(partieReelle == 0 && partieImaginaire == 0)
-            throw new ArithmeticException(); //0 n'a pas d'argument!
+            throw new IllegalArgumentException("0 ne peut pas avoir d'argument.");
         if(partieReelle<0 && partieImaginaire==0)
             return PI; //l'argument d'un nombre réel négatif est toujours pi. Gérer ce cas séparément permet d'éviter une division par zéro.
         else

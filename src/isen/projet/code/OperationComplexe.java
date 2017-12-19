@@ -32,6 +32,8 @@ public final class OperationComplexe
      */
     public static NombreComplexe inverse(NombreComplexe z)
     {
+        if(z.getPartieReelle() == 0 && z.getPartieImaginaire() == 0)
+            throw new IllegalArgumentException("0 ne peut pas avoir d'inverse."); //Impossible de calculer l'inverse de 0
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(z.getPartieReelle()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
         zs.setPartieImaginaire(-z.getPartieImaginaire()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
@@ -54,6 +56,14 @@ public final class OperationComplexe
         return zs;
     }
 
+    public static NombreComplexe additionner(NombreComplexe z1, double x)
+    {
+        NombreComplexe zs = new NombreComplexe();
+        zs.setPartieReelle(x+z1.getPartieReelle());
+        zs.setPartieImaginaire(z1.getPartieImaginaire());
+        return zs;
+    }
+
     /**
      * \brief    Fonction soustraire
      * \details  Cette fonction permet de calculer la soustraction entre deux nombre complexes
@@ -67,6 +77,22 @@ public final class OperationComplexe
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(z1.getPartieReelle()-z2.getPartieReelle());
         zs.setPartieImaginaire(z1.getPartieImaginaire()-z2.getPartieImaginaire());
+        return zs;
+    }
+
+    public static NombreComplexe soustraire(NombreComplexe z1, double x)
+    {
+        NombreComplexe zs = new NombreComplexe();
+        zs.setPartieReelle(z1.getPartieReelle()-x);
+        zs.setPartieImaginaire(z1.getPartieImaginaire());
+        return zs;
+    }
+
+    public static NombreComplexe soustraire(double x, NombreComplexe z1)
+    {
+        NombreComplexe zs = new NombreComplexe();
+        zs.setPartieReelle(x-z1.getPartieReelle());
+        zs.setPartieImaginaire(z1.getPartieImaginaire());
         return zs;
     }
 
@@ -89,6 +115,14 @@ public final class OperationComplexe
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(z1.getPartieReelle()*z2.getPartieReelle()-z1.getPartieImaginaire()*z2.getPartieImaginaire());
         zs.setPartieImaginaire(z1.getPartieReelle()*z2.getPartieImaginaire()+z1.getPartieImaginaire()*z2.getPartieReelle());
+        return zs;
+    }
+
+    public static NombreComplexe multiplier(NombreComplexe z1, double x)
+    {
+        NombreComplexe zs = new NombreComplexe();
+        zs.setPartieReelle(x*z1.getPartieReelle());
+        zs.setPartieImaginaire(x*z1.getPartieImaginaire());
         return zs;
     }
 
@@ -117,7 +151,7 @@ public final class OperationComplexe
     {
         NombreComplexe zs = new NombreComplexe();
         if(module < 0)
-            throw new ArithmeticException(); //un module ne peut pas être négatif
+            throw new IllegalArgumentException("Un module ne peut pas être négatif."); //un module ne peut pas être négatif
         argument = (argument+PI)%(2*PI)-PI; //on s'assure que l'argument reste entre -pi et pi
         zs.setPartieReelle(module*cos(argument));
         zs.setPartieImaginaire(module*sin(argument));
