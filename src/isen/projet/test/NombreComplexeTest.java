@@ -52,7 +52,6 @@ class NombreComplexeTest {
 
         z = new NombreComplexe(-11, -27);
         module = 29.154759474226502;
-        System.out.println(module);
         assertTrue(z.module() == module, "Erreur module x et y negatifs");
 
         z = new NombreComplexe(0, -98);
@@ -68,18 +67,34 @@ class NombreComplexeTest {
     @Test
     void argumentTest()
     {
-        fail("Not yet implemented");
+        NombreComplexe z = new NombreComplexe(1, 1);
+        assertTrue(z.argument() == 0.7853981633974484, "Erreur argument x et y positifs");
+
+        z = new NombreComplexe(-2, -2);
+        assertTrue(z.argument() == -2.356194490192345, "Erreur argument x et y negatifs");
+
+        z = new NombreComplexe(-3, 1);
+        assertTrue(z.argument() == 2.8198420991931505, "Erreur argument x negatif");
+
+        z = new NombreComplexe(2, -4);
+        assertTrue(z.argument() == -1.1071487177940904, "Erreur argument y negatif");
+
+        z = new NombreComplexe(0, 4);
+        assertTrue(z.argument() == 1.5707963267948966, "Erreur argument x nul");
+
+        z = new NombreComplexe(3, 0);
+        assertTrue(z.argument() == 0, "Erreur argument y nul");
     }
 
     @Test
     void toStringTest()
     {
         NombreComplexe z = new NombreComplexe(-11, -27);
-        String string = "-11 - 27i";
+        String string = "-11-27i";
         assertTrue(z.toString() == string, "Erreur string x et y negatifs");
 
         z = new NombreComplexe(785, 245);
-        string = "785 + 245i";
+        string = "785+245i";
         assertTrue(z.toString() == string, "Erreur string x et y positifs");
 
         z = new NombreComplexe(0, 8);
@@ -96,11 +111,11 @@ class NombreComplexeTest {
     void formeExponentielleTest()
     {
         NombreComplexe z = new NombreComplexe(-5, -9);
-        String string = "10,296*e^(i*-2,078)";
+        String string = "10,296*e^(-2,078i)";
         assertTrue(z.formeExponentielle().equals(string), "Erreur forme exponentielle x et y negatifs");
 
         z = new NombreComplexe(78, 43);
-        string = "89,067*e^(i*0,504)";
+        string = "89,067*e^(0,504i)";
         assertTrue(z.formeExponentielle().equals(string), "Erreur forme exponentielle x et y positifs");
 
         z = new NombreComplexe(2, 0);
@@ -108,7 +123,7 @@ class NombreComplexeTest {
         assertTrue(z.formeExponentielle().equals(string), "Erreur forme exponentielle y nul");
 
         z = new NombreComplexe(0, 4);
-        string = "4*e^(i*1,571)";
+        string = "4*e^(1,571i)";
         System.out.println(z.formeExponentielle());
         assertTrue(z.formeExponentielle().equals(string), "Erreur forme exponentielle x nul");
 
