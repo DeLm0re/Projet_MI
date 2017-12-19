@@ -105,6 +105,14 @@ public final class OperationComplexe
         return multiplier(z1,inverse(z2));
     }
 
+    /**
+     * \brief    Fonction diviser
+     * \details  Cette fonction permet de transformer un nombre complexe en forme exponentiel, en forme algebrique.
+     *           La forme exponentiel est passée en paramètre grâce au module et à l'argument du nombre complexe.
+     * \param    module     Le module du nombre complexe
+     * \param    argument   L'argument du nombre complexe
+     * \return   \e NombreComplexe zs, Un nombre complexe (sous forme algébrique, grâce à l'objet)
+     */
     public static NombreComplexe expoVersAlgebrique(double module, double argument)
     {
         NombreComplexe zs = new NombreComplexe();
