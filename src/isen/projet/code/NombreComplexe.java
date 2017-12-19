@@ -65,11 +65,42 @@ public class NombreComplexe
 
     public String toString()
     {
-        return null;
+        String valeur = "";
+        NumberFormat formatter = new DecimalFormat("##.###"); //permet d'éviter les virgules non nécessaires
+        if(partieReelle == 0 && partieImaginaire == 0)
+        {
+            valeur = "0";
+            return valeur;
+        }
+        if(partieReelle != 0)
+        {
+            valeur += formatter.format(partieReelle);
+        }
+        if(partieImaginaire != 0)
+        {
+            if(partieImaginaire > 0)
+                valeur += " + ";
+            if(partieImaginaire < 0)
+                valeur += " - ";
+            if(abs(partieImaginaire) != 1)
+                valeur += formatter.format(abs(partieImaginaire));
+            valeur += "i";
+        }
+        return valeur;
     }
 
     public String formeExponentielle()
     {
-        return null;
+        String valeur = "";
+        NumberFormat formatter = new DecimalFormat("##.###"); //permet d'éviter les virgules non nécessaires
+        if(partieReelle == 0 && partieImaginaire == 0)
+        {
+            valeur = "0";
+            return valeur;
+        }
+        valeur += formatter.format(module());
+        if(partieImaginaire != 0)
+            valeur += ("*e^(i*"+formatter.format(argument())+")");
+        return valeur;
     }
 }
