@@ -24,7 +24,7 @@ public class Fourier
      * \param    taille         La taille de nos futurs tableaux \e (^2)
      * \return   \e void (le constructeur change l'attribut et ne doit rien retourner)
      */
-    public void Fourier(int taille)
+    public Fourier(int taille)
     {
         setTaille(taille);
     }
