@@ -10,12 +10,15 @@
  */
 package isen.projet.code;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.*;
+
 public class Data
 {
     public static final int SIN = 1;
     public static final int COS = 2;
 
-    private float Sreel[];
+    private double Sreel[];
     private NombreComplexe Scomplexe[];
 
     /**
@@ -27,9 +30,20 @@ public class Data
      * \param    taille         La taille de nos tableaux \e (^2)
      * \return   \e void (le constructeur change les attributs et ne doit rien retourner)
      */
-    public void Data(int signal, int taille)
+    public Data(int signal, int taille)
     {
+        this.Sreel = new double[taille];
+        this.Scomplexe = new NombreComplexe[taille];
 
+        switch(signal){
+            case SIN:
+                initSin(taille);
+            break;
+
+            case COS:
+                initCos(taille);
+            break;
+        }
     }
 
     /**
@@ -42,7 +56,11 @@ public class Data
      */
     private void initSin(int taille)
     {
-
+        for(int i = 0; i < taille; ++i)
+        {
+            double x = (2*i*PI)/taille;
+            getSreel()[i] = sin(x);
+        }
     }
 
     /**
@@ -55,16 +73,20 @@ public class Data
      */
     private void initCos(int taille)
     {
-
+        for(int i = 0; i < taille; ++i)
+        {
+            double x = (2*i*PI)/taille;
+            getSreel()[i] = cos(x);
+        }
     }
 
     /**
      * \brief    Fonction magique getSreel
      * \details  Une fois appelée, cette fonction renvoie l'attribut Sreel de la classe Data.
      *           La fonction est \e public et permet de retourner Sreel qui est \e private
-     * \return   \e float[] Sreel, qui est notre tableau de \e float (Sreel est un attribut de la classe Data)
+     * \return   \e double[] Sreel, qui est notre tableau de \e double (Sreel est un attribut de la classe Data)
      */
-    public float[] getSreel()
+    public double[] getSreel()
     {
         return Sreel;
     }
