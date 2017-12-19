@@ -10,6 +10,8 @@ public final class OperationComplexe
 
     public static NombreComplexe inverse(NombreComplexe z)
     {
+        if(z.getPartieReelle() == 0 && z.getPartieImaginaire() == 0)
+            throw new ArithmeticException(); //Impossible de calculer l'inverse de 0
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(z.getPartieReelle()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
         zs.setPartieImaginaire(-z.getPartieImaginaire()/(z.getPartieReelle()*z.getPartieReelle() + z.getPartieImaginaire()*z.getPartieImaginaire()));
