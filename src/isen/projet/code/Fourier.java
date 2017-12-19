@@ -47,7 +47,7 @@ public class Fourier
      *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
      *           Elle est appelée par la fonction FFTr et permet de "descendre et remonter" dans la récursion,
      *           nécessaire pour traiter notre tableau de réels.
-     * \param    \e float Lreel[]         Notre tableau de réels (contient nos résultats)
+     * \param    Lreel[]         Notre tableau de réels (contient nos résultats)
      * \return   \e void, il s'agit d'une fonction de calcul, donc pas de retour.
      */
     private void recursiveFFTr(float Lreel[])
@@ -59,7 +59,6 @@ public class Fourier
      * \brief    Fonction magique getTaille
      * \details  Une fois appelée, cette fonction renvoie l'attribut taille de la classe Fourier.
      *           La fonction est \e public et permet de retourner taille qui est \e private
-     * \param    void
      * \return   \e int taille, qui est notre taille de tableau \e (^2) de nos retours, comme de nos traitements.
      */
     public int getTaille() {
@@ -70,7 +69,7 @@ public class Fourier
      * \brief    Fonction magique setTaille
      * \details  Une fois appelée, cette fonction modifie l'attribut taille de la classe Fourier.
      *           La fonction est \e public et permet de modifier l'attribut taille qui est \e private
-     * \param    int taille        La valeur de notre taille que l'on veut sauvegarder
+     * \param    taille        La valeur de notre taille que l'on veut sauvegarder
      * \return   \e void, il s'agit d'un setteur, donc il n'y a pas de retour.
      */
     public void setTaille(int taille) {

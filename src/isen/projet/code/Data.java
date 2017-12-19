@@ -62,7 +62,6 @@ public class Data
      * \brief    Fonction magique getSreel
      * \details  Une fois appelée, cette fonction renvoie l'attribut Sreel de la classe Data.
      *           La fonction est \e public et permet de retourner Sreel qui est \e private
-     * \param    void
      * \return   \e float[] Sreel, qui est notre tableau de \e float (Sreel est un attribut de la classe Data)
      */
     public float[] getSreel()
@@ -74,7 +73,6 @@ public class Data
      * \brief    Fonction magique getScomplexe
      * \details  Une fois appelée, cette fonction renvoie l'attribut Scomplexe de la classe Data.
      *           La fonction est \e public et permet de retourner Scomplexe qui est \e private
-     * \param    void
      * \return   \e NombreComplexe[] Scomplexe, qui est notre tableau de \e NombreComplexe
      *              (Scomplexe est un attribut de la classe Data)
      *              (NombreComplexe est une classe qui gére les nombres complexes)
