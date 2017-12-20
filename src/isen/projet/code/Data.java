@@ -66,6 +66,7 @@ public class Data
     {
         for(int i = 0; i < taille; ++i) {
             getSreel()[i] = 1;
+            getScomplexe()[i] = new NombreComplexe(1,1);
         }
     }
 
@@ -83,6 +84,7 @@ public class Data
         {
             double x = (2*i*PI)/taille;
             getSreel()[i] = sin(x);
+            getScomplexe()[i] = new NombreComplexe(0,sin(x));
         }
     }
 
@@ -100,6 +102,7 @@ public class Data
         {
             double x = (2*i*PI)/taille;
             getSreel()[i] = cos(x);
+            getScomplexe()[i] = new NombreComplexe(0,cos(x));
         }
     }
 
@@ -113,9 +116,13 @@ public class Data
     private void initDirac(int taille)
     {
         getSreel()[0] = 1;
-        for(int i = 1; i < taille; ++i)
-        {
+        for(int i = 1; i < taille; ++i) {
             getSreel()[i] = 0;
+        }
+
+        getScomplexe()[0] = new NombreComplexe(1,1);
+        for(int i = 1; i < taille; ++i) {
+            getScomplexe()[i] = new NombreComplexe(0,0);
         }
     }
 
