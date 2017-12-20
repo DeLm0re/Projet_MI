@@ -156,13 +156,21 @@ public final class OperationComplexe
      *           passés en paramètre.
      * \param    z1        Notre premier nombre complexe
      * \param    z2        Notre deuxième nombre complexe
-     * \return   \e NombreComplexe zs, il s'agit de la division de nos deux nombre complexes passés en paramètre
+     * \return   \e NombreComplexe, il s'agit de la division de nos deux nombre complexes passés en paramètre
      */
     public static NombreComplexe diviser(NombreComplexe z1, NombreComplexe z2)
     {
         return multiplier(z1,inverse(z2));
     }
 
+    /**
+     * \brief    Fonction diviser
+     * \details  Cette fonction permet de calculer la division entre un nombre complexe et un \e double
+     *           passés en paramètre.
+     * \param    z         Notre premier nombre complexe
+     * \param    x         Notre nombre de type \e double
+     * \return   \e NombreComplexe, il s'agit de la division de nos deux nombres passés en paramètre
+     */
     public static NombreComplexe diviser(NombreComplexe z, double x)
     {
         if(x == 0)

@@ -189,7 +189,31 @@ class OperationComplexeTest {
     {
         NombreComplexe z = new NombreComplexe(547,-9845);
         NombreComplexe za = diviser(z, z);
-        assertTrue(za.getPartieReelle() == 1 && za.getPartieImaginaire() == 0, "Erreur division");
+        assertTrue(za.getPartieReelle() == 1 && za.getPartieImaginaire() == 0, "Erreur division : z/z ");
+
+        z = new NombreComplexe(6, 6);
+        za = diviser(z, 3);
+        assertTrue(za.getPartieReelle() == 2 && za.getPartieImaginaire() == 2, "Erreur division : z/x positif");
+
+        z = new NombreComplexe(0, 0);
+        za = diviser(z, 2);
+        assertTrue(za.getPartieReelle() == 0 && za.getPartieImaginaire() == 0, "Erreur division : z nul");
+
+        z = new NombreComplexe(-6, -12);
+        za = diviser(z, 3);
+        assertTrue(za.getPartieReelle() == -2 && za.getPartieImaginaire() == -4, "Erreur division : z/x negatif");
+
+        assertThrows(IllegalArgumentException.class,
+                ()-> {
+                    NombreComplexe z0 = new NombreComplexe(8, 5);
+                    NombreComplexe zR = diviser(z0, 0);
+                }, "Erreur division : exception de division par 0");
+
+        assertThrows(IllegalArgumentException.class,
+                ()-> {
+                    NombreComplexe z0 = new NombreComplexe(0, 0);
+                    NombreComplexe zR = diviser(z0, 0);
+                }, "Erreur division : exception de division par 0 quand z est nul");
     }
 
     @Test
