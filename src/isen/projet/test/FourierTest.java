@@ -35,4 +35,33 @@ class FourierTest
 
     }
 
+    @Test
+    void FFTcTest()
+    {
+        Fourier f = new Fourier(16);
+        NombreComplexe resu[] = f.FFTc(Data.UN);
+        assertTrue(resu[0].getPartieReelle() == 16, "Erreur FFTc : signal uniforme à 1 +i");
+        assertTrue(resu[0].getPartieImaginaire() == 16, "Erreur FFTc : signal uniforme à 1 +i");
+        for(int i = 1; i < 16; i++)
+        {
+            assertTrue(resu[i].getPartieReelle() == 0, "Erreur FFTc : signal uniforme à 1 +i");
+            assertTrue(resu[i].getPartieImaginaire() == 0, "Erreur FFTc : signal uniforme à 1 +i");
+        }
+
+        f = new Fourier(64);
+        resu = f.FFTc(Data.DIRAC);
+        for(int i = 0; i < 64; i++)
+        {
+            assertTrue(resu[i].getPartieReelle() == 1, "Erreur FFTc : impulsion de Dirac");
+        }
+
+        f = new Fourier(8);
+        resu = f.FFTc(Data.SIN);
+        assertTrue(resu[0].getPartieReelle() == 0, "Erreur FFTc : sinus");
+        assertTrue(resu[1].getPartieReelle() == 4, "Erreur FFTc : sinus");
+        assertTrue(resu[4].getPartieReelle() == 0, "Erreur FFTc : sinus");
+        assertTrue(resu[7].getPartieReelle() == -4, "Erreur FFTc : sinus");
+
+    }
+
 }
