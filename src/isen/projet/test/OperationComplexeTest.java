@@ -135,16 +135,19 @@ class OperationComplexeTest {
         x = 3;
         za = soustraire(x, z1);
         assertTrue(za.getPartieReelle() == -7, "Erreur soustraction surcharge 2 : z1 et x positifs");
+        assertTrue(za.getPartieImaginaire() == -5, "Erreur soustraction surcharge 2 : z1 et x positifs");
 
         z1 = new NombreComplexe(3, 5);
         x = -4;
         za = soustraire(x, z1);
         assertTrue(za.getPartieReelle() == -7, "Erreur soustraction surcharge 2 : z1 positif et x négatif");
+        assertTrue(za.getPartieImaginaire() == -5, "Erreur soustraction surcharge 2 : z1 positif et x négatif");
 
         z1 = new NombreComplexe(0, 0);
         x = 22;
         za = soustraire(x, z1);
         assertTrue(za.getPartieReelle() == 22, "Erreur soustraction surcharge 2 : z1 nul et x positifs");
+        assertTrue(za.getPartieImaginaire() == 0, "Erreur soustraction surcharge 2 : z1 nul et x positifs");
 
         z1 = new NombreComplexe(0, 0);
         x = 0;
