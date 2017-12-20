@@ -86,9 +86,9 @@ public class NombreComplexe
             if(partieImaginaire != 0)
             {
                 if (partieImaginaire > 0)
-                    valeur += "+";
+                    valeur += " +";
                 if (partieImaginaire < 0)
-                    valeur += "-";
+                    valeur += " -";
                 if(abs(partieImaginaire) != 1)
                     valeur += formatter.format(abs(partieImaginaire));
                 valeur += "i";

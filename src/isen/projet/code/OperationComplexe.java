@@ -1,8 +1,6 @@
 package isen.projet.code;
 
-import static java.lang.Math.PI;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
+import static java.lang.Math.*;
 
 public final class OperationComplexe
 {
@@ -42,22 +40,22 @@ public final class OperationComplexe
         return zs;
     }
 
-    public static NombreComplexe soustraire(NombreComplexe z1, double x)
+    public static NombreComplexe soustraire(NombreComplexe z, double x)
     {
         NombreComplexe zs = new NombreComplexe();
-        zs.setPartieReelle(z1.getPartieReelle()-x);
-        zs.setPartieImaginaire(z1.getPartieImaginaire());
+        zs.setPartieReelle(z.getPartieReelle()-x);
+        zs.setPartieImaginaire(z.getPartieImaginaire());
         return zs;
     }
 
-    public static NombreComplexe soustraire(double x, NombreComplexe z1)
+    public static NombreComplexe soustraire(double x, NombreComplexe z)
     {
         NombreComplexe zs = new NombreComplexe();
-        zs.setPartieReelle(x-z1.getPartieReelle());
-        zs.setPartieImaginaire(z1.getPartieImaginaire());
+        zs.setPartieReelle(x-z.getPartieReelle());
+        zs.setPartieImaginaire(-z.getPartieImaginaire());
         return zs;
     }
-    
+
     public static NombreComplexe multiplier(NombreComplexe z1, NombreComplexe z2)
     {
         NombreComplexe zs = new NombreComplexe();
@@ -66,11 +64,11 @@ public final class OperationComplexe
         return zs;
     }
 
-    public static NombreComplexe multiplier(NombreComplexe z1, double x)
+    public static NombreComplexe multiplier(NombreComplexe z, double x)
     {
         NombreComplexe zs = new NombreComplexe();
-        zs.setPartieReelle(x*z1.getPartieReelle());
-        zs.setPartieImaginaire(x*z1.getPartieImaginaire());
+        zs.setPartieReelle(x*z.getPartieReelle());
+        zs.setPartieImaginaire(x*z.getPartieImaginaire());
         return zs;
     }
 
@@ -88,5 +86,14 @@ public final class OperationComplexe
         zs.setPartieReelle(module*cos(argument));
         zs.setPartieImaginaire(module*sin(argument));
         return zs;
+    }
+
+    public static NombreComplexe puissance(NombreComplexe z, double x)
+    {
+        if(z.getPartieReelle() == 0 && z.getPartieImaginaire() == 0) //on gère le cas z1 = 0 séparément, car 0 n'a pas d'argument
+        {
+            return new NombreComplexe((x!=0)?0:1,0); //0^x = 0 si x!=0 et 0^0 = 1
+        }
+        return expoVersAlgebrique(pow(z.module(),x),z.argument()*x);
     }
 }
