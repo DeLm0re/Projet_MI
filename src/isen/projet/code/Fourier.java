@@ -87,12 +87,6 @@ public class Fourier
         return S;
     }
 
-    //à remplacer par la version complète de la FFTc!
-    private NombreComplexe[] recursiveFFTc(NombreComplexe tab[], int taille)
-    {
-        return null;
-    }
-
     public NombreComplexe[] iFFT(NombreComplexe transformee[], int taille)
     {
         NombreComplexe traitement[] = new NombreComplexe[taille];
