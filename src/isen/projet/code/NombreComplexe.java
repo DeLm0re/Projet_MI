@@ -14,7 +14,7 @@ public class NombreComplexe
     public NombreComplexe(double partieReelle, double partieImaginaire, double margeErreur)
     {
         this.partieReelle=(abs(partieReelle)>margeErreur)?partieReelle:0;
-        this.partieImaginaire=(abs(partieImaginaire)>margeErreur)?partieReelle:0;
+        this.partieImaginaire=(abs(partieImaginaire)>margeErreur)?partieImaginaire:0;
         this.margeErreur=margeErreur;
     }
 
