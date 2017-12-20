@@ -1,5 +1,8 @@
 <map id="isen.projet.code.Main.main" name="isen.projet.code.Main.main">
-<area shape="rect" id="node2" href="$classisen_1_1projet_1_1code_1_1_fourier.html#a19125e7befaffd4a9f3061859564a6c4" title="Fonction magique getTaille. " alt="" coords="469,5,649,47"/>
-<area shape="rect" id="node3" href="$classisen_1_1projet_1_1code_1_1_fourier.html#a69ecd1b31e30fbfbd40887d6fa9c73f1" title="Fonction FFTr. " alt="" coords="232,54,421,81"/>
-<area shape="rect" id="node4" href="$classisen_1_1projet_1_1code_1_1_data.html#a7f28272878e140a2ecfd519067d1be94" title="Fonction magique getSreel. " alt="" coords="476,80,643,121"/>
+<area shape="rect" id="node2" href="$classisen_1_1projet_1_1code_1_1_fourier.html#a19125e7befaffd4a9f3061859564a6c4" title="Fonction magique getTaille. " alt="" coords="521,5,701,47"/>
+<area shape="rect" id="node3" href="$classisen_1_1projet_1_1code_1_1_fourier.html#a40110fb6c1d4659cf733da67f200f759" title="Fonction FFTc. " alt="" coords="232,55,424,82"/>
+<area shape="rect" id="node4" href="$classisen_1_1projet_1_1code_1_1_data.html#a0f2279b624c2c1af85e551b0a8162697" title="Fonction magique getScomplexe. " alt="" coords="527,77,694,119"/>
+<area shape="rect" id="node5" href="$classisen_1_1projet_1_1code_1_1_fourier.html#a2363da0df81493258c2f82a6f9a58d5e" title="Fonction iFFT. " alt="" coords="234,157,422,183"/>
+<area shape="rect" id="node6" href="$classisen_1_1projet_1_1code_1_1_nombre_complexe.html#af047a2bece3742ac4c810d85cc41e283" title="Fonction conjuge. " alt="" coords="472,157,749,183"/>
+<area shape="rect" id="node7" href="$classisen_1_1projet_1_1code_1_1_nombre_complexe.html#afaed6ac1b2462ddb72362029bc0c3a08" title="Un constructeur de la classe NombreComplexe. " alt="" coords="797,149,1023,191"/>
 </map>
