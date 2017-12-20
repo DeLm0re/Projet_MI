@@ -10,12 +10,13 @@
  */
 package isen.projet.code;
 
+import static isen.projet.code.OperationComplexe.*;
 import static java.lang.Math.*;
 
 public class Fourier
 {
     private int taille;
-    private Data donnee;
+    public Data donnee;
 
     private NombreComplexe Lcomplexe[];
 
@@ -46,6 +47,7 @@ public class Fourier
     public NombreComplexe[] FFTr(int signal)
     {
         this.donnee = new Data(signal,this.getTaille());
+        this.Lcomplexe = new NombreComplexe[this.getTaille()];
 
         recursiveFFTr(this.donnee.getSreel());
 
@@ -67,10 +69,10 @@ public class Fourier
             this.Lcomplexe[0] = new NombreComplexe(this.donnee.getSreel()[0],0);
         }
         else {
-            double reelPair[] = new double[taille/2];
-            double reelImpair[] = new double[taille/2];
+            double reelPair[] = new double[reel.length/2];
+            double reelImpair[] = new double[reel.length/2];
 
-            for(int i = 0; i < taille/2; i++){
+            for(int i = 0; i < reel.length/2; i++){
                 reelPair[i] = this.donnee.getSreel()[2*i];
                 reelImpair[i] = this.donnee.getSreel()[(2*i)+1];
             }
@@ -78,12 +80,12 @@ public class Fourier
             recursiveFFTr(reelPair);
             recursiveFFTr(reelImpair);
 
-            for(int k = 0; k <= (taille/2) - 1; k++){
-                double argumentM = -((2*PI*k)/taille);
-                NombreComplexe M = OperationComplexe.expoVersAlgebrique(1,argumentM);
+            for(int k = 0; k <= (reel.length/2) - 1; k++){
+                double argumentM = -((2*PI*k)/reel.length);
+                NombreComplexe M = expoVersAlgebrique(1,argumentM);
 
-                this.Lcomplexe[k] = OperationComplexe.additionner(OperationComplexe.multiplier(M,reelImpair[k]),reelPair[k]);
-                this.Lcomplexe[(k+taille)/2] = OperationComplexe.soustraire(OperationComplexe.multiplier(M,reelImpair[k]),reelPair[k]);
+                this.Lcomplexe[k] = additionner(multiplier(M,reelImpair[k]),reelPair[k]);
+                this.Lcomplexe[k+(reel.length/2)] = soustraire(multiplier(M,reelImpair[k]),reelPair[k]);
             }
         }
     }
