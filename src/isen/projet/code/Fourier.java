@@ -85,7 +85,7 @@ public class Fourier
                 NombreComplexe M = expoVersAlgebrique(1,argumentM);
 
                 this.Lcomplexe[k] = additionner(multiplier(M,reelImpair[k]),reelPair[k]);
-                this.Lcomplexe[k+(reel.length/2)] = soustraire(multiplier(M,reelImpair[k]),reelPair[k]);
+                this.Lcomplexe[k+(reel.length/2)] = soustraire(reelPair[k],multiplier(M,reelImpair[k]));
             }
         }
     }
