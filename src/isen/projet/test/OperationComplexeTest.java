@@ -4,6 +4,7 @@ import isen.projet.code.NombreComplexe;
 import org.junit.jupiter.api.Test;
 
 import static isen.projet.code.OperationComplexe.*;
+import static java.lang.Math.PI;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperationComplexeTest {
@@ -127,4 +128,24 @@ class OperationComplexeTest {
         assertTrue(za.getPartieReelle() == 1 && za.getPartieImaginaire() == 0, "Erreur division");
     }
 
+    @Test
+    void expoVersAlgebriqueTest()
+    {
+        NombreComplexe z = expoVersAlgebrique(1, PI);
+        assertTrue(z.getPartieReelle() == -1, "Erreur expoVersAlgebrique : cas classique partie réelle");
+        assertTrue(z.getPartieImaginaire() == 0, "Erreur expoVersAlgebrique : cas classique partie imaginaire");
+
+        z = expoVersAlgebrique(0, 3);
+        assertTrue(z.getPartieReelle() == 0, "Erreur expoVersAlgebrique : module nul partie réelle");
+        assertTrue(z.getPartieImaginaire() == 0, "Erreur expoVersAlgebrique : module nul partie imaginaire");
+
+        z = expoVersAlgebrique(7, 0);
+        assertTrue(z.getPartieReelle() == 7, "Erreur expoVersAlgebrique : argument nul partie réelle");
+        assertTrue(z.getPartieImaginaire() == 0, "Erreur expoVersAlgebrique : argument nul partie imaginaire");
+
+        assertThrows(IllegalArgumentException.class,
+                ()-> {
+                    expoVersAlgebrique(-2, 87);
+                }, "Erreur expoVersAlgebrique : module négatif");
+    }
 }
