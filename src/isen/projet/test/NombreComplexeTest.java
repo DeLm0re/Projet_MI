@@ -90,11 +90,11 @@ class NombreComplexeTest {
     void toStringTest()
     {
         NombreComplexe z = new NombreComplexe(-11, -27);
-        String string = "-11-27i";
+        String string = "-11 -27i";
         assertTrue(z.toString().equals(string), "Erreur string x et y negatifs");
 
         z = new NombreComplexe(785, 245);
-        string = "785+245i";
+        string = "785 +245i";
         assertTrue(z.toString().equals(string), "Erreur string x et y positifs");
 
         z = new NombreComplexe(0, 8);
