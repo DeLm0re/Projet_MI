@@ -61,6 +61,26 @@ class OperationComplexeTest {
         z2 = new NombreComplexe(0, 0);
         za = additionner(z1, z2);
         assertTrue(za.getPartieReelle() == 0 && za.getPartieImaginaire() == 0, "Erreur addition : z1 et z2 nuls");
+
+        z1 = new NombreComplexe(3, 5);
+        double x = 7;
+        za = additionner(z1, x);
+        assertTrue(za.getPartieReelle() == 10, "Erreur addition : z1 et x positifs");
+
+        z1 = new NombreComplexe(3, 5);
+        x = -4;
+        za = additionner(z1, x);
+        assertTrue(za.getPartieReelle() == -1, "Erreur addition : z1 positif et x négatif");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 17;
+        za = additionner(z1, x);
+        assertTrue(za.getPartieReelle() == 17, "Erreur addition : z1 nul et x positifs");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 0;
+        za = additionner(z1, x);
+        assertTrue(za.getPartieReelle() == 0, "Erreur addition : z1 et x nuls");
     }
 
     @Test
@@ -89,6 +109,47 @@ class OperationComplexeTest {
         z2 = new NombreComplexe(0, 0);
         za = soustraire(z1, z2);
         assertTrue(za.getPartieReelle() == 0 && za.getPartieImaginaire() == 0, "Erreur soustraction : z1 et z2 nuls");
+
+        z1 = new NombreComplexe(7, 5);
+        double x = 3;
+        za = soustraire(z1, x);
+        assertTrue(za.getPartieReelle() == 4, "Erreur soustraction surcharge 1 : z1 et x positifs");
+
+        z1 = new NombreComplexe(3, 5);
+        x = -4;
+        za = soustraire(z1, x);
+        assertTrue(za.getPartieReelle() == 7, "Erreur soustraction surcharge 1 : z1 positif et x négatif");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 17;
+        za = soustraire(z1, x);
+        assertTrue(za.getPartieReelle() == -17, "Erreur soustraction surcharge 1 : z1 nul et x positifs");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 0;
+        za = soustraire(z1, x);
+        assertTrue(za.getPartieReelle() == 0, "Erreur soustraction surcharge 1 : z1 et x nuls");
+
+
+        z1 = new NombreComplexe(10, 5);
+        x = 3;
+        za = soustraire(x, z1);
+        assertTrue(za.getPartieReelle() == -7, "Erreur soustraction surcharge 2 : z1 et x positifs");
+
+        z1 = new NombreComplexe(3, 5);
+        x = -4;
+        za = soustraire(x, z1);
+        assertTrue(za.getPartieReelle() == -7, "Erreur soustraction surcharge 2 : z1 positif et x négatif");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 22;
+        za = soustraire(x, z1);
+        assertTrue(za.getPartieReelle() == 22, "Erreur soustraction surcharge 2 : z1 nul et x positifs");
+
+        z1 = new NombreComplexe(0, 0);
+        x = 0;
+        za = soustraire(x, z1);
+        assertTrue(za.getPartieReelle() == 0, "Erreur soustraction surcharge 2 : z1 et x nuls");
     }
 
     @Test
