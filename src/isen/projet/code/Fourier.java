@@ -18,8 +18,6 @@ public class Fourier
     private int taille;
     public Data donnee;
 
-    private NombreComplexe Lcomplexe[];
-
     /**
      * \brief    Constructeur de la classe Fourier
      * \details  Ce constructeur modifie l'attribut taille de la classe (\e int)
@@ -47,47 +45,46 @@ public class Fourier
     public NombreComplexe[] FFTr(int signal)
     {
         this.donnee = new Data(signal,this.getTaille());
-        this.Lcomplexe = new NombreComplexe[this.getTaille()];
-
-        recursiveFFTr(this.donnee.getSreel());
-
-        return(this.Lcomplexe);
+        return recursiveFFTr(this.donnee.getSreel(), this.getTaille());
     }
 
     /**
      * \brief    Fonction recursiveFFTr
      * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
-     *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
+     *           échantillon de valeurs \e réelles de notre signal, représenté par un tableau \e double.
      *           Elle est appelée par la fonction FFTr et permet de "descendre et remonter" dans la récursion,
-     *           nécessaire pour traiter notre tableau de réels.
-     * \param    reel[]         Notre tableau de réels en \e double; (contient nos données)
-     * \return   \e void, il s'agit d'une fonction de calcul, donc pas de retour.
+     *           nécessaire pour traiter notre tableau de données.
+     * \param    tab[]         Notre tableau de réels en \e double; (contient nos données)
+     * \param    taille        La taille du tableau de \e double qui représente nos données
+     * \return   \e NombreComplexe, retourne le tableau de \e NombreComplexe qui sont les transformées de Fourier des données
      */
-    private void recursiveFFTr(double reel[])
+    private NombreComplexe[] recursiveFFTr(double tab[], int taille)
     {
-        if(reel.length == 1) {
-            this.Lcomplexe[0] = new NombreComplexe(this.donnee.getSreel()[0],0);
+        NombreComplexe S[] = new NombreComplexe[taille];
+        if(taille < 2) {
+            S[0] = new NombreComplexe(tab[0],0);
         }
         else {
-            double reelPair[] = new double[reel.length/2];
-            double reelImpair[] = new double[reel.length/2];
+            double reelPair[] = new double[taille/2];
+            double reelImpair[] = new double[taille/2];
 
-            for(int i = 0; i < reel.length/2; i++){
-                reelPair[i] = this.donnee.getSreel()[2*i];
-                reelImpair[i] = this.donnee.getSreel()[(2*i)+1];
+            for(int i = 0; i < taille/2; i++){
+                reelPair[i] = tab[2*i];
+                reelImpair[i] = tab[(2*i)+1];
             }
 
-            recursiveFFTr(reelPair);
-            recursiveFFTr(reelImpair);
+            NombreComplexe P0[] = recursiveFFTr(reelPair, taille/2);
+            NombreComplexe P1[] = recursiveFFTr(reelImpair, taille/2);
 
-            for(int k = 0; k <= (reel.length/2) - 1; k++){
-                double argumentM = -((2*PI*k)/reel.length);
+            for(int k = 0; k <= (taille/2) - 1; k++){
+                double argumentM = -((2*PI*k)/taille);
                 NombreComplexe M = expoVersAlgebrique(1,argumentM);
 
-                this.Lcomplexe[k] = additionner(multiplier(M,reelImpair[k]),reelPair[k]);
-                this.Lcomplexe[k+(reel.length/2)] = soustraire(reelPair[k],multiplier(M,reelImpair[k]));
+                S[k] = additionner(multiplier(M,P1[k]),P0[k]);
+                S[k+(taille/2)] = soustraire(P0[k],multiplier(M,P1[k]));
             }
         }
+        return S;
     }
 
     /**
