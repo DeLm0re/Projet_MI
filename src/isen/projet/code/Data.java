@@ -15,8 +15,9 @@ import static java.lang.Math.*;
 
 public class Data
 {
-    public static final int SIN = 1;
-    public static final int COS = 2;
+    public static final int UN = 1;
+    public static final int SIN = 2;
+    public static final int COS = 3;
 
     private double Sreel[];
     private NombreComplexe Scomplexe[];
@@ -36,13 +37,31 @@ public class Data
         this.Scomplexe = new NombreComplexe[taille];
 
         switch(signal){
+            case UN:
+                initUn(taille);
+                break;
+
             case SIN:
                 initSin(taille);
-            break;
+                break;
 
             case COS:
                 initCos(taille);
-            break;
+                break;
+        }
+    }
+
+    /**
+     * \brief    Fonction initUn
+     * \details  Appelée par le constructeur de la classe, cette fonction initialise les tableaux de la classe
+     *           par des 1
+     * \param    taille         La taille de nos tableaux \e (^2)
+     * \return   \e void (cette fonction change les attributs et ne doit rien retourner)
+     */
+    private void initUn(int taille)
+    {
+        for(int i = 0; i < taille; ++i) {
+            getSreel()[i] = 1;
         }
     }
 
