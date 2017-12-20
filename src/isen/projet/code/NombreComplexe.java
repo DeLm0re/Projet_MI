@@ -23,6 +23,14 @@ public class NombreComplexe
 {
     private double partieReelle;
     private double partieImaginaire;
+    private double margeErreur;
+
+    public NombreComplexe(double partieReelle, double partieImaginaire, double margeErreur)
+    {
+        this.partieReelle=(abs(partieReelle)>margeErreur)?partieReelle:0;
+        this.partieImaginaire=(abs(partieImaginaire)>margeErreur)?partieImaginaire:0;
+        this.margeErreur=margeErreur;
+    }
 
     /**
      * \brief    Un constructeur de la classe NombreComplexe
@@ -34,8 +42,7 @@ public class NombreComplexe
      */
     public NombreComplexe(double partieReelle, double partieImaginaire)
     {
-        this.partieReelle=partieReelle;
-        this.partieImaginaire=partieImaginaire;
+        this(partieReelle, partieImaginaire, 1e-10);
     }
 
     /**
@@ -46,8 +53,7 @@ public class NombreComplexe
      */
     public NombreComplexe()
     {
-        this.partieReelle=0;
-        this.partieImaginaire=0;
+        this(0,0);
     }
 
     /**
@@ -68,7 +74,7 @@ public class NombreComplexe
      * \return   \e void, il s'agit d'un setteur, donc il n'y a pas de retour.
      */
     public void setPartieReelle(double partieReelle) {
-        this.partieReelle = partieReelle;
+        this.partieReelle=(abs(partieReelle)>margeErreur)?partieReelle:0;
     }
 
     /**
@@ -89,7 +95,7 @@ public class NombreComplexe
      * \return   \e void, il s'agit d'un setteur, donc il n'y a pas de retour.
      */
     public void setPartieImaginaire(double partieImaginaire) {
-        this.partieImaginaire = partieImaginaire;
+        this.partieImaginaire=(abs(partieImaginaire)>margeErreur)?partieImaginaire:0;
     }
 
     /**
@@ -101,8 +107,8 @@ public class NombreComplexe
      */
     public void setNombreComplexe(NombreComplexe z)
     {
-        this.partieReelle = z.getPartieReelle();
-        this.partieImaginaire = z.getPartieImaginaire();
+        setPartieReelle(z.getPartieReelle());
+        setPartieImaginaire(z.getPartieImaginaire());
     }
 
     /**
