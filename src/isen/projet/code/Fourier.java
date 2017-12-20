@@ -63,7 +63,7 @@ public class Fourier
      */
     private void recursiveFFTr(double reel[])
     {
-        if(getTaille() == 1) {
+        if(reel.length == 1) {
             this.Lcomplexe[0] = new NombreComplexe(this.donnee.getSreel()[0],0);
         }
         else {
@@ -83,6 +83,7 @@ public class Fourier
                 NombreComplexe M = OperationComplexe.expoVersAlgebrique(1,argumentM);
 
                 this.Lcomplexe[k] = OperationComplexe.additionner(OperationComplexe.multiplier(M,reelImpair[k]),reelPair[k]);
+                this.Lcomplexe[(k+taille)/2] = OperationComplexe.soustraire(OperationComplexe.multiplier(M,reelImpair[k]),reelPair[k]);
             }
         }
     }
