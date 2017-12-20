@@ -87,6 +87,28 @@ public class Fourier
         return S;
     }
 
+    //à remplacer par la version complète de la FFTc!
+    private NombreComplexe[] recursiveFFTc(NombreComplexe tab[], int taille)
+    {
+        return null;
+    }
+
+    public NombreComplexe[] iFFT(NombreComplexe transformee[], int taille)
+    {
+        NombreComplexe traitement[] = new NombreComplexe[taille];
+        System.arraycopy(transformee,0,traitement,0,taille);
+        for(int i = 0; i < taille; i++)
+        {
+            traitement[i]=transformee[i].conjugue();
+        }
+        traitement = recursiveFFTc(traitement, taille);
+        for(int i = 0; i < taille; i++)
+        {
+            traitement[i]=diviser(traitement[i].conjugue(),taille);
+        }
+        return traitement;
+    }
+
     /**
      * \brief    Fonction magique getTaille
      * \details  Une fois appelée, cette fonction renvoie l'attribut taille de la classe Fourier.
