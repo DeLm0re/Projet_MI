@@ -18,6 +18,7 @@ public class Data
     public static final int UN = 1;
     public static final int SIN = 2;
     public static final int COS = 3;
+    public static final int DIRAC = 4;
 
     private double Sreel[];
     private NombreComplexe Scomplexe[];
@@ -48,6 +49,9 @@ public class Data
             case COS:
                 initCos(taille);
                 break;
+            case DIRAC:
+                initDirac(taille);
+            break;
         }
     }
 
@@ -96,6 +100,22 @@ public class Data
         {
             double x = (2*i*PI)/taille;
             getSreel()[i] = cos(x);
+        }
+    }
+
+    /**
+     * \brief    Fonction initDirac
+     * \details  Appelée par le constructeur de la classe, cette fonction initialise les tableaux de la classe
+     *           par une impulsion de Dirac
+     * \param    taille         La taille de nos tableaux \e (^2)
+     * \return   \e void (cette fonction change les attributs et ne doit rien retourner)
+     */
+    private void initDirac(int taille)
+    {
+        getSreel()[0] = 1;
+        for(int i = 1; i < taille; ++i)
+        {
+            getSreel()[i] = 0;
         }
     }
 

@@ -19,11 +19,11 @@ public class Main {
      */
     public static void main(String args[])
     {
-        Fourier monFourier = new Fourier(16);
+        Fourier monFourier = new Fourier(128);
 
         NombreComplexe monRetour[] = new NombreComplexe[monFourier.getTaille()];
 
-        monRetour = monFourier.FFTr(1);
+        monRetour = monFourier.FFTr(4);
 
         for(int i = 0; i < monFourier.getTaille(); ++i)
         {
