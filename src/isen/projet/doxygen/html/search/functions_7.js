@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['nombrecomplexe',['NombreComplexe',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#ad6f66ebc38bfc538c64f0217450762b1',1,'isen.projet.code.NombreComplexe.NombreComplexe(double partieReelle, double partieImaginaire)'],['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#afaed6ac1b2462ddb72362029bc0c3a08',1,'isen.projet.code.NombreComplexe.NombreComplexe()']]]
+  ['main',['main',['../classisen_1_1projet_1_1code_1_1_main.html#af4cb88e649dac0ce3f964adde3ceb655',1,'isen::projet::code::Main']]],
+  ['module',['module',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#ade991c416a96fd45ace19ca3c98ce7f8',1,'isen::projet::code::NombreComplexe']]],
+  ['multiplier',['multiplier',['../classisen_1_1projet_1_1code_1_1_operation_complexe.html#a476b2396e9ccddbab2f5d22707b87fcd',1,'isen.projet.code.OperationComplexe.multiplier(NombreComplexe z1, NombreComplexe z2)'],['../classisen_1_1projet_1_1code_1_1_operation_complexe.html#a4ee9ae281f6341aa80b1cc3dc87761c7',1,'isen.projet.code.OperationComplexe.multiplier(NombreComplexe z, double x)']]]
 ];

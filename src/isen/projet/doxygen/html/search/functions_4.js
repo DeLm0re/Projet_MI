@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['getpartieimaginaire',['getPartieImaginaire',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#ae74d052ce26ea7c3e2682cf3bd1622c7',1,'isen::projet::code::NombreComplexe']]],
-  ['getpartiereelle',['getPartieReelle',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#a80e20165308cc29da1d01817830b2320',1,'isen::projet::code::NombreComplexe']]],
-  ['getscomplexe',['getScomplexe',['../classisen_1_1projet_1_1code_1_1_data.html#a0f2279b624c2c1af85e551b0a8162697',1,'isen::projet::code::Data']]],
-  ['getsreel',['getSreel',['../classisen_1_1projet_1_1code_1_1_data.html#ab630b0c242c583f28fd5b320f1807919',1,'isen::projet::code::Data']]],
-  ['gettaille',['getTaille',['../classisen_1_1projet_1_1code_1_1_fourier.html#a19125e7befaffd4a9f3061859564a6c4',1,'isen::projet::code::Fourier']]]
+  ['fftr',['FFTr',['../classisen_1_1projet_1_1code_1_1_fourier.html#a69ecd1b31e30fbfbd40887d6fa9c73f1',1,'isen::projet::code::Fourier']]],
+  ['formeexponentielle',['formeExponentielle',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#a0e5e42f13961629e66a17e31009eceb3',1,'isen::projet::code::NombreComplexe']]],
+  ['fourier',['Fourier',['../classisen_1_1projet_1_1code_1_1_fourier.html#a695448c5f7b4c1c874fc653bff24f0f8',1,'isen::projet::code::Fourier']]]
 ];

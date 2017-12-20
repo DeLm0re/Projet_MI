@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tostring',['toString',['../classisen_1_1projet_1_1code_1_1_nombre_complexe.html#a7366499901a868c60bed4da34447eda1',1,'isen::projet::code::NombreComplexe']]]
+  ['puissance',['puissance',['../classisen_1_1projet_1_1code_1_1_operation_complexe.html#aaa3ed5eb2fff03f53f46b75cba689485',1,'isen::projet::code::OperationComplexe']]]
 ];
