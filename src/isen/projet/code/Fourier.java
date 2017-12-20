@@ -87,6 +87,15 @@ public class Fourier
         return S;
     }
 
+    /**
+     * \brief    Fonction iFFT
+     * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) inverse de nos
+     *           valeurs, stockés dans un tableau de nombres \e NombreComplexe.
+     *           Elle est appelée sur un tableau de retour de la fonction FFTr ou FFTc.
+     * \param    transformee[]         Notre tableau de rnombres complexes en \e NombreComplexe; (contient nos transformées)
+     * \param    taille                La taille du tableau de \e NombreComplexe qui représente nos transformées
+     * \return   \e NombreComplexe, retourne le tableau de \e NombreComplexe qui sont les données d'origines
+     */
     public NombreComplexe[] iFFT(NombreComplexe transformee[], int taille)
     {
         NombreComplexe traitement[] = new NombreComplexe[taille];
