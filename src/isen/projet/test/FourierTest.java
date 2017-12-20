@@ -64,4 +64,19 @@ class FourierTest
 
     }
 
+    @Test
+    void iFFTTest()
+    {
+        Fourier f = new Fourier(64);
+        NombreComplexe ifftc[] = f.iFFT(f.FFTc(Data.SIN), 64);
+
+        Data d = new Data(Data.SIN, 64);
+        NombreComplexe depart[] = d.getScomplexe();
+
+        for(int i = 0; i < 64; i++)
+        {
+            assertTrue(depart[i].toString().equals(ifftc[i].toString()), "Erreur iFFT");
+        }
+    }
+    
 }
