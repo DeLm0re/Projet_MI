@@ -88,6 +88,58 @@ public class Fourier
     }
 
     /**
+     * \brief    Fonction FFTc
+     * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
+     *           échantillon de valeurs \e complexes de notre signal (\e int), passé en paramétre.
+     * \param    signal         Notre entier représentant le signal
+     * \return   \e NombreComplexe[], On renvoie un tableau similaire à celui qui contient nos données à traiter.
+     */
+    public NombreComplexe[] FFTc(int signal)
+    {
+        this.donnee = new Data(signal,this.getTaille());
+        return recursiveFFTc(this.donnee.getScomplexe(), this.getTaille());
+    }
+
+    /**
+     * \brief    Fonction recursiveFFTc
+     * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
+     *           échantillon de valeurs \e complexes de notre signal, représenté par un tableau de \e NombreComplexe.
+     *           Elle est appelée par la fonction FFTc et permet de "descendre et remonter" dans la récursion,
+     *           nécessaire pour traiter notre tableau de données.
+     * \param    tab[]         Notre tableau de complexes en \e NombreComplexe; (contient nos données)
+     * \param    taille        La taille du tableau de \e NombreComplexe qui représente nos données
+     * \return   \e NombreComplexe, retourne le tableau de \e NombreComplexe qui sont les transformées de Fourier des données
+     */
+    private NombreComplexe[] recursiveFFTc(NombreComplexe tab[], int taille)
+    {
+        NombreComplexe S[] = new NombreComplexe[taille];
+        if(taille < 2) {
+            S[0] = tab[0];
+        }
+        else {
+            NombreComplexe complexesPair[] = new NombreComplexe[taille/2];
+            NombreComplexe complexesImpair[] = new NombreComplexe[taille/2];
+
+            for(int i = 0; i < taille/2; i++){
+                complexesPair[i] = tab[2*i];
+                complexesImpair[i] = tab[(2*i)+1];
+            }
+
+            NombreComplexe P0[] = recursiveFFTc(complexesPair, taille/2);
+            NombreComplexe P1[] = recursiveFFTc(complexesImpair, taille/2);
+
+            for(int k = 0; k <= (taille/2) - 1; k++){
+                double argumentM = -((2*PI*k)/taille);
+                NombreComplexe M = expoVersAlgebrique(1,argumentM);
+
+                S[k] = additionner(multiplier(M,P1[k]),P0[k]);
+                S[k+(taille/2)] = soustraire(P0[k],multiplier(M,P1[k]));
+            }
+        }
+        return S;
+    }
+
+    /**
      * \brief    Fonction magique getTaille
      * \details  Une fois appelée, cette fonction renvoie l'attribut taille de la classe Fourier.
      *           La fonction est \e public et permet de retourner taille qui est \e private
