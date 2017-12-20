@@ -52,7 +52,7 @@ public final class OperationComplexe
     {
         NombreComplexe zs = new NombreComplexe();
         zs.setPartieReelle(x-z.getPartieReelle());
-        zs.setPartieImaginaire(z.getPartieImaginaire());
+        zs.setPartieImaginaire(-z.getPartieImaginaire());
         return zs;
     }
 
