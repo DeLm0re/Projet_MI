@@ -25,10 +25,20 @@ public class Main {
 
         monRetour = monFourier.FFTc(3);
 
+        NombreComplexe monRetourInverse[] = new NombreComplexe[monFourier.getTaille()];
+
         for(int i = 0; i < monFourier.getTaille(); ++i)
         {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monFourier.donnee.getScomplexe()[i] + " => " + monRetour[i]);
+        }
+        System.out.println("test inverse");
+        System.arraycopy(monRetour,0,monRetourInverse,0,monFourier.getTaille());
+        monRetourInverse = monFourier.iFFT(monRetour,monFourier.getTaille());
+        for(int i = 0; i < monFourier.getTaille(); ++i)
+        {
+            //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
+            System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
     }
 }
