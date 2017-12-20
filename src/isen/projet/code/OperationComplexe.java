@@ -163,6 +163,13 @@ public final class OperationComplexe
         return multiplier(z1,inverse(z2));
     }
 
+    public static NombreComplexe diviser(NombreComplexe z, double x)
+    {
+        if(x == 0)
+            throw new IllegalArgumentException("Division par zéro.");
+        return multiplier(z,1/x);
+    }
+
     /**
      * \brief    Fonction diviser
      * \details  Cette fonction permet de transformer un nombre complexe en forme exponentiel, en forme algebrique.

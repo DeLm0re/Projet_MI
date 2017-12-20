@@ -87,6 +87,22 @@ public class Fourier
         return S;
     }
 
+    public NombreComplexe[] iFFT(NombreComplexe transformee[], int taille)
+    {
+        NombreComplexe traitement[] = new NombreComplexe[taille];
+        System.arraycopy(transformee,0,traitement,0,taille);
+        for(int i = 0; i < taille; i++)
+        {
+            traitement[i]=transformee[i].conjugue();
+        }
+        traitement = recursiveFFTc(traitement, taille);
+        for(int i = 0; i < taille; i++)
+        {
+            traitement[i]=diviser(traitement[i].conjugue(),taille);
+        }
+        return traitement;
+    }
+
     /**
      * \brief    Fonction FFTc
      * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
