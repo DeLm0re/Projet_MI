@@ -51,11 +51,12 @@ public class Fourier
     /**
      * \brief    Fonction recursiveFFTr
      * \details  Cette fonction a pour but de calculer la FFT (Fast Fourier Transformation) de notre
-     *           échantillon de valeurs \e réelles de notre signal (\e int), passé en paramétre.
+     *           échantillon de valeurs \e réelles de notre signal, représenté par un tableau \e double.
      *           Elle est appelée par la fonction FFTr et permet de "descendre et remonter" dans la récursion,
-     *           nécessaire pour traiter notre tableau de réels.
-     * \param    reel[]         Notre tableau de réels en \e double; (contient nos données)
-     * \return   \e void, il s'agit d'une fonction de calcul, donc pas de retour.
+     *           nécessaire pour traiter notre tableau de données.
+     * \param    tab[]         Notre tableau de réels en \e double; (contient nos données)
+     * \param    taille        La taille du tableau de \e double qui représente nos données
+     * \return   \e NombreComplexe, retourne le tableau de \e NombreComplexe qui sont les transformées de Fourier des données
      */
     private NombreComplexe[] recursiveFFTr(double tab[], int taille)
     {
