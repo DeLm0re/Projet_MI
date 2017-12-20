@@ -90,7 +90,7 @@ public final class OperationComplexe
      * \brief    Fonction soustraire
      * \details  Cette fonction permet de calculer la soustraction entre deux nombre complexes
      *           passés en paramètre.
-     * \param    z1        Notre premier nombre complexe
+     * \param    z         Notre premier nombre complexe
      * \param    x         Notre nombre en \e double
      * \return   \e NombreComplexe zs, il s'agit de la soustraction de z1 par x
      */
@@ -107,7 +107,7 @@ public final class OperationComplexe
      * \details  Cette fonction permet de calculer la soustraction entre deux nombre complexes
      *           passés en paramètre.
      * \param    x         Notre nombre en \e double
-     * \param    z1        Notre premier nombre complexe
+     * \param    z         Notre premier nombre complexe
      * \return   \e NombreComplexe zs, il s'agit de la soustraction de x par z1
      */
     public static NombreComplexe soustraire(double x, NombreComplexe z)
@@ -126,12 +126,6 @@ public final class OperationComplexe
      * \param    z2        Notre deuxième nombre complexe
      * \return   \e NombreComplexe zs, il s'agit de la multiplication de nos deux nombre complexes passés en paramètre
      */
-    /*pour tester cette fonction:
-     * z_1 = a_1 + ib_1
-     * z_2 = a_2 + ib_2
-     * il faut que:
-     * z_1*z_2 = (a_1 + ib_1)(a_2 + ib_2) = (a_1*a_2 - b_1*b_2) + i(a_1*b_2 + b_1*a_2)
-     */
     public static NombreComplexe multiplier(NombreComplexe z1, NombreComplexe z2)
     {
         NombreComplexe zs = new NombreComplexe();
@@ -144,7 +138,7 @@ public final class OperationComplexe
      * \brief    Fonction multiplier
      * \details  Cette fonction permet de calculer la multiplication entre deux nombre complexes
      *           passés en paramètre.
-     * \param    z1        Notre premier nombre complexe
+     * \param    z         Notre premier nombre complexe
      * \param    x         Notre nombre en \e double
      * \return   \e NombreComplexe zs, il s'agit de la multiplication de nos deux nombres
      */
@@ -188,6 +182,13 @@ public final class OperationComplexe
         return zs;
     }
 
+    /**
+     * \brief    Fonction puissance
+     * \details  Cette fonction permet de calculer un nombre complexe à la puissance d'un réel.
+     * \param    z          Le nombre complexe à mettre à la puissance
+     * \param    x          La puissance \e double
+     * \return   \e NombreComplexe zs, Un nombre complexe (sous forme algébrique, grâce à l'objet)
+     */
     public static NombreComplexe puissance(NombreComplexe z, double x)
     {
         if(z.getPartieReelle() == 0 && z.getPartieImaginaire() == 0) //on gère le cas z1 = 0 séparément, car 0 n'a pas d'argument
