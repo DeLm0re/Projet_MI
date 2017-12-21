@@ -23,7 +23,7 @@ public class Main {
 
         NombreComplexe monRetour[] = new NombreComplexe[monFourier.getTaille()];
 
-        monRetour = monFourier.FFTc(3);
+        monRetour = monFourier.FFTc(5);
 
         NombreComplexe monRetourInverse[] = new NombreComplexe[monFourier.getTaille()];
 
@@ -40,5 +40,7 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
+        monFourier.donnee.CSVWrite(monRetour);
+        monFourier.donnee.CSVWrite(monRetourInverse);
     }
 }

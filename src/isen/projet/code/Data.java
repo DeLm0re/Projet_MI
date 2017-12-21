@@ -194,6 +194,14 @@ public class Data
     }
 
 
+    /**
+     * \brief    Fonction CSVparser
+     * \details  Appelée par la fonction initCSV, elle lit le fichier afin de transformer le contenu du fichier en un tableau 2D de String
+     * \param    path         Le chemin du fichier CSV à lire
+     *           taille       taille du tableau à renvoyer
+     * \return   \e String[][] info, notre tableau de nombre complexes
+     *              (info est une variable de initCSV)
+     */
     private String[][] CSVparser(String path, int taille) throws Exception{
         String line;
         String separator = ";";
@@ -214,7 +222,14 @@ public class Data
         return null;
     }
 
-    public void CSVWrite(NombreComplexe donnees[])
+    /**
+     * \brief    Fonction CSVWrite
+     * \details  Appelée dans le main, cette fonction écrit le tableau de nombre complexes fourni en paramètre dans le fichier CSV d'adresse stockée comme attribut.
+     * \param    donnees      Le tableau de nombres complexes
+     * \return   true si l'écriture a réussi
+     *           false sinon
+     */
+    public boolean CSVWrite(NombreComplexe donnees[])
     {
         if (csvFile.equals("")) {
             String line;
@@ -239,9 +254,18 @@ public class Data
                 e.printStackTrace();
 
             }
+            return true;
         }
+        else return false;
     }
 
+    /**
+     * \brief    Fonction CSVWrite
+     * \details  Appelée dans initCSV, cette fonction affiche un menu qui permet à l'utilisateur de sélectionner le fichier CSV à importer
+     * \param    type       Le type de fichier à importer, ici CSV
+     * \return   \e String CSVfile, le chemin vers le fichier CSV sélectionné
+     *              (CSVfile est un attribut de la classe Data)
+     */
     private String menuOuverture(String type)
     {
         JFileChooser fenetreMenu = new JFileChooser();
