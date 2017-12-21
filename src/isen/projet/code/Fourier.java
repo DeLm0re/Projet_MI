@@ -44,6 +44,8 @@ public class Fourier
      */
     public NombreComplexe[] FFTr(int signal)
     {
+        if(signal == 5)
+            throw new IllegalArgumentException("Le signal d'un fichier CSV est complexe.");
         this.donnee = new Data(signal,this.getTaille());
         return recursiveFFTr(this.donnee.getSreel(), this.getTaille());
     }
