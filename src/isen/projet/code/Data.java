@@ -13,6 +13,12 @@ package isen.projet.code;
 import static java.lang.Math.PI;
 import static java.lang.Math.*;
 
+import java.awt.*;
+import java.io.*;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class Data
 {
     public static final int INC = 0;
@@ -20,9 +26,11 @@ public class Data
     public static final int SIN = 2;
     public static final int COS = 3;
     public static final int DIRAC = 4;
+    public static final int CSV = 5;
 
     private double Sreel[];
     private NombreComplexe Scomplexe[];
+    private String csvFile;
 
     /**
      * \brief    Constructeur de la classe Data
@@ -37,6 +45,7 @@ public class Data
     {
         this.Sreel = new double[taille];
         this.Scomplexe = new NombreComplexe[taille];
+        this.csvFile = "";
 
         switch(signal){
 
@@ -58,6 +67,11 @@ public class Data
 
             case DIRAC:
                 initDirac(taille);
+            break;
+
+            case CSV:
+                initCSV(taille);
+            break;
                 break;
         }
     }
@@ -149,6 +163,35 @@ public class Data
     }
 
     /**
+     * \brief    Fonction initCSV
+     * \details  Appelée par le constructeur de la classe, cette fonction initialise les tableaux de la classe
+     *           par la première colonne du tableur .CSV sélectionné
+     * \param    taille         La taille de nos tableaux \e (^2)
+     * \return   true si le tableau a bien été initialisé
+     *           false sinon
+     */
+    private boolean initCSV(int taille)
+    {
+        String path = menuOuverture("csv");
+        if(path == null)
+            return false;
+        try {
+            String info[][] = CSVparser(path, taille);
+            for(int i = 0; i < info.length; i++)
+            {
+                double Re = Double.parseDouble(info[i][0]);
+                double Im = Double.parseDouble(info[i][1]);
+                getScomplexe()[i] = new NombreComplexe(Re,Im);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
      * \brief    Fonction magique getSreel
      * \details  Une fois appelée, cette fonction renvoie l'attribut Sreel de la classe Data.
      *           La fonction est \e public et permet de retourner Sreel qui est \e private
@@ -170,5 +213,97 @@ public class Data
     public NombreComplexe[] getScomplexe()
     {
         return Scomplexe;
+    }
+
+
+    /**
+     * \brief    Fonction CSVparser
+     * \details  Appelée par la fonction initCSV, elle lit le fichier afin de transformer le contenu du fichier en un tableau 2D de String
+     * \param    path         Le chemin du fichier CSV à lire
+     *           taille       taille du tableau à renvoyer
+     * \return   \e String[][] info, notre tableau de nombre complexes
+     *              (info est une variable de initCSV)
+     */
+    private String[][] CSVparser(String path, int taille) throws Exception{
+        String line;
+        String separator = ";";
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            csvFile = path;
+            String info[][] = new String[taille][2];
+            int i = 0;
+            while ((line = br.readLine()) != null && i < taille) {
+                info[i] = (line.split(separator));
+                i++;
+            }
+            if(i < taille)
+                throw new Exception("La liste fournie n'est pas de taille 2^N");
+            return info;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * \brief    Fonction CSVWrite
+     * \details  Appelée dans le main, cette fonction écrit le tableau de nombre complexes fourni en paramètre dans le fichier CSV d'adresse stockée comme attribut.
+     * \param    donnees      Le tableau de nombres complexes
+     * \return   true si l'écriture a réussi
+     *           false sinon
+     */
+    public boolean CSVWrite(NombreComplexe donnees[])
+    {
+        if (csvFile.equals("")) {
+            String line;
+            String separator = ";";
+            String info[] = new String[donnees.length];
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                int i = 0;
+                while ((line = br.readLine()) != null && i < donnees.length) {
+                    info[i] = line + separator + separator + donnees[i].getPartieReelle() + separator + donnees[i].getPartieImaginaire();
+                    i++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try (FileWriter fw = new FileWriter(csvFile)) {
+                for (int i = 0; i < donnees.length; i++) {
+                    fw.write(info[i] + "\n");
+                }
+                System.out.println("données écrites dans " + csvFile);
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+            return true;
+        }
+        else return false;
+    }
+
+    /**
+     * \brief    Fonction CSVWrite
+     * \details  Appelée dans initCSV, cette fonction affiche un menu qui permet à l'utilisateur de sélectionner le fichier CSV à importer
+     * \param    type       Le type de fichier à importer, ici CSV
+     * \return   \e String CSVfile, le chemin vers le fichier CSV sélectionné
+     *              (CSVfile est un attribut de la classe Data)
+     */
+    private String menuOuverture(String type)
+    {
+        JFileChooser fenetreMenu = new JFileChooser();
+        fenetreMenu.setAcceptAllFileFilterUsed(false);
+        fenetreMenu.setFileFilter(new FileNameExtensionFilter("CSV files", type));
+        JFrame jf = new JFrame();
+        int resultat = fenetreMenu.showOpenDialog(jf);
+
+        if (resultat == JFileChooser.APPROVE_OPTION)
+        {
+            String path = fenetreMenu.getSelectedFile().getAbsolutePath();
+            jf.dispose();
+            return (path);
+        }
+        else
+            jf.dispose();
+            return (null);
     }
 }

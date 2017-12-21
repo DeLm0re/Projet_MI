@@ -59,6 +59,9 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
+      
+        monFourier.donnee.CSVWrite(monRetour);
+        monFourier.donnee.CSVWrite(monRetourInverse);
 
         try {
             genereChartSignal(monFourier);
