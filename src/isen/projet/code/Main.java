@@ -13,6 +13,7 @@ import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
 import org.jfree.data.category.*;
 import org.jfree.data.general.*;
+import java.util.Scanner;
 
 import java.io.File;
 import java.util.List;
@@ -29,8 +30,58 @@ public class Main {
      */
     public static void main(String args[]) throws Exception {
 
-        int signal = 2;
-        int taille = 64;
+        int signal;
+        int taille;
+        Scanner in = new Scanner(System.in);
+
+        do {
+            System.out.println("Choisissez votre signal :");
+            System.out.println("0. Signal incrémenté :");
+            System.out.println("1. Signal unitaire constant");
+            System.out.println("2. Sinus");
+            System.out.println("3. Cosinus");
+            System.out.println("4. Impulsion de Dirac");
+            System.out.println("5. Importer un signal depuis un fichier CSV");
+            signal = in.nextInt();
+            if(signal<0 || signal>5)
+            {
+                System.out.println("Choix incorrect. Vous devez entrer un nombre entre 0 et 5.");
+            }
+            else
+            {
+                System.out.print("Choix confirmé. Vous avez choisi un");
+                switch(signal)
+                {
+                    case 0:
+                        System.out.println(" signal incrémenté.");
+                        break;
+                    case 1:
+                        System.out.println(" signal unitaire constant.");
+                        break;
+                    case 2:
+                        System.out.println(" sinus.");
+                        break;
+                    case 3:
+                        System.out.println(" cosinus.");
+                        break;
+                    case 4:
+                        System.out.println("e impulsion de Diract.");
+                        break;
+                    case 5:
+                        System.out.println(" signal importé depuis un fichier CSV. Veuillez choisir ce fichier dans la fenêtre qui s'est ouverte.");
+                        break;
+                }
+            }
+        } while (signal<0 || signal>5);
+
+        do {
+            System.out.println("Choisissez votre taille d'échantillon :");
+            taille = in.nextInt();
+            if((taille <= 0) || ((taille & (taille - 1)) != 0))
+            {
+                System.out.println("Choix incorrect. Vous devez entrer une puissance de 2.");
+            }
+        } while ((taille <= 0) || ((taille & (taille - 1)) != 0));
 
         Fourier monFourier = new Fourier(taille);
 
@@ -59,9 +110,11 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
-      
-        monFourier.donnee.CSVWrite(monRetour);
-        monFourier.donnee.CSVWrite(monRetourInverse);
+
+        if(signal == 5) {
+            monFourier.donnee.CSVWrite(monRetour);
+            monFourier.donnee.CSVWrite(monRetourInverse);
+        }
 
         try {
             genereChartSignal(monFourier);

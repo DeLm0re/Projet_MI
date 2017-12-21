@@ -72,7 +72,6 @@ public class Data
             case CSV:
                 initCSV(taille);
             break;
-                break;
         }
     }
 
