@@ -13,12 +13,19 @@ package isen.projet.code;
 import static java.lang.Math.PI;
 import static java.lang.Math.*;
 
+import java.awt.*;
+import java.io.*;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class Data
 {
     public static final int UN = 1;
     public static final int SIN = 2;
     public static final int COS = 3;
     public static final int DIRAC = 4;
+    public static final int CSV = 5;
 
     private double Sreel[];
     private NombreComplexe Scomplexe[];
@@ -49,8 +56,13 @@ public class Data
             case COS:
                 initCos(taille);
                 break;
+
             case DIRAC:
                 initDirac(taille);
+            break;
+
+            case CSV:
+                initCSV(taille);
             break;
         }
     }
@@ -127,6 +139,35 @@ public class Data
     }
 
     /**
+     * \brief    Fonction initCSV
+     * \details  Appelée par le constructeur de la classe, cette fonction initialise les tableaux de la classe
+     *           par la première colonne du tableur .CSV sélectionné
+     * \param    taille         La taille de nos tableaux \e (^2)
+     * \return   true si le tableau a bien été initialisé
+     *           false sinon
+     */
+    private boolean initCSV(int taille)
+    {
+        String path = menuOuverture("csv");
+        if(path == null)
+            return false;
+        try {
+            String info[][] = CSVparser(path, taille);
+            for(int i = 0; i < info.length; i++)
+            {
+                double Re = Double.parseDouble(info[i][0]);
+                double Im = Double.parseDouble(info[i][1]);
+                getScomplexe()[i] = new NombreComplexe(Re,Im);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
      * \brief    Fonction magique getSreel
      * \details  Une fois appelée, cette fonction renvoie l'attribut Sreel de la classe Data.
      *           La fonction est \e public et permet de retourner Sreel qui est \e private
@@ -148,5 +189,44 @@ public class Data
     public NombreComplexe[] getScomplexe()
     {
         return Scomplexe;
+    }
+
+
+    private String[][] CSVparser(String path, int taille) throws Exception{
+        String line = "";
+        String separator = ";";
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String info[][] = new String[taille][2];
+            int i = 0;
+            while ((line = br.readLine()) != null && i < taille) {
+                info[i] = (line.split(separator));
+                i++;
+            }
+            if(i < taille)
+                throw new Exception("La liste fournie n'est pas de taille 2^N");
+            return info;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String menuOuverture(String type)
+    {
+        JFileChooser fenetreMenu = new JFileChooser();
+        fenetreMenu.setAcceptAllFileFilterUsed(false);
+        fenetreMenu.setFileFilter(new FileNameExtensionFilter("CSV files", type));
+        JFrame jf = new JFrame();
+        int resultat = fenetreMenu.showOpenDialog(jf);
+
+        if (resultat == JFileChooser.APPROVE_OPTION)
+        {
+            String path = fenetreMenu.getSelectedFile().getAbsolutePath();
+            jf.dispose();
+            return (path);
+        }
+        else
+            jf.dispose();
+            return (null);
     }
 }
