@@ -15,6 +15,7 @@ import static java.lang.Math.*;
 
 public class Data
 {
+    public static final int INC = 0;
     public static final int UN = 1;
     public static final int SIN = 2;
     public static final int COS = 3;
@@ -38,6 +39,11 @@ public class Data
         this.Scomplexe = new NombreComplexe[taille];
 
         switch(signal){
+
+            case INC:
+                initInc(taille);
+                break;
+
             case UN:
                 initUn(taille);
                 break;
@@ -49,9 +55,25 @@ public class Data
             case COS:
                 initCos(taille);
                 break;
+
             case DIRAC:
                 initDirac(taille);
-            break;
+                break;
+        }
+    }
+
+    /**
+     * \brief    Fonction initInc
+     * \details  Appelée par le constructeur de la classe, cette fonction initialise les tableaux de la classe
+     *           par un increment de 1
+     * \param    taille         La taille de nos tableaux \e (^2)
+     * \return   \e void (cette fonction change les attributs et ne doit rien retourner)
+     */
+    private void initInc(int taille)
+    {
+        for(int i = 0; i < taille; ++i) {
+            getSreel()[i] = i;
+            getScomplexe()[i] = new NombreComplexe(0,i);
         }
     }
 
