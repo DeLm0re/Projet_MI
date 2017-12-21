@@ -29,6 +29,7 @@ public class Data
 
     private double Sreel[];
     private NombreComplexe Scomplexe[];
+    private String csvFile;
 
     /**
      * \brief    Constructeur de la classe Data
@@ -43,6 +44,7 @@ public class Data
     {
         this.Sreel = new double[taille];
         this.Scomplexe = new NombreComplexe[taille];
+        this.csvFile = "";
 
         switch(signal){
             case UN:
@@ -193,9 +195,10 @@ public class Data
 
 
     private String[][] CSVparser(String path, int taille) throws Exception{
-        String line = "";
+        String line;
         String separator = ";";
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            csvFile = path;
             String info[][] = new String[taille][2];
             int i = 0;
             while ((line = br.readLine()) != null && i < taille) {
@@ -209,6 +212,34 @@ public class Data
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void CSVWrite(NombreComplexe donnees[])
+    {
+        if (csvFile.equals("")) {
+            String line;
+            String separator = ";";
+            String info[] = new String[donnees.length];
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                int i = 0;
+                while ((line = br.readLine()) != null && i < donnees.length) {
+                    info[i] = line + separator + separator + donnees[i].getPartieReelle() + separator + donnees[i].getPartieImaginaire();
+                    i++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try (FileWriter fw = new FileWriter(csvFile)) {
+                for (int i = 0; i < donnees.length; i++) {
+                    fw.write(info[i] + "\n");
+                }
+                System.out.println("données écrites dans " + csvFile);
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
     }
 
     private String menuOuverture(String type)
