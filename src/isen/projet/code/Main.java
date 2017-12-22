@@ -188,7 +188,7 @@ public class Main {
 
         JFreeChart lineChartObject = ChartFactory.createLineChart(
                 "Notre signal de départ","Valeurs échantillonées",
-                "Module des valeurs du sinus",
+                "Module des valeurs du signal",
                 line_chart_dataset, PlotOrientation.VERTICAL,
                 true,true,false);
 
