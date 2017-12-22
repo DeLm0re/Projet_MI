@@ -110,9 +110,7 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
-        System.out.println(signal);
         if(signal == 5) {
-            System.out.println("lul");
             monFourier.donnee.CSVWrite(monRetour);
             monFourier.donnee.CSVWrite(monRetourInverse);
         }
