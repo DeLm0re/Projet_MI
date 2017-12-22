@@ -42,7 +42,7 @@ public class NombreComplexe
      */
     public NombreComplexe(double partieReelle, double partieImaginaire)
     {
-        this(partieReelle, partieImaginaire, 1e-5);
+        this(partieReelle, partieImaginaire, 1e-10);
     }
 
     /**
