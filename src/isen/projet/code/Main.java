@@ -36,7 +36,7 @@ public class Main {
 
         do {
             System.out.println("Choisissez votre signal :");
-            System.out.println("0. Signal incrémenté :");
+            System.out.println("0. Signal incrémenté");
             System.out.println("1. Signal unitaire constant");
             System.out.println("2. Sinus");
             System.out.println("3. Cosinus");
@@ -68,7 +68,7 @@ public class Main {
                         System.out.println("e impulsion de Diract.");
                         break;
                     case 5:
-                        System.out.println(" signal importé depuis un fichier CSV. Veuillez choisir ce fichier dans la fenêtre qui s'est ouverte.");
+                        System.out.println(" signal importé depuis un fichier CSV.");
                         break;
                 }
             }
@@ -87,7 +87,7 @@ public class Main {
 
         NombreComplexe monRetour[] = new NombreComplexe[monFourier.getTaille()];
 
-        monRetour = monFourier.FFTr(signal);
+        monRetour = monFourier.FFTc(signal);
 
         System.out.println("FFT");
         for(int i = 0; i < monFourier.getTaille(); ++i)
@@ -110,7 +110,6 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
-
         if(signal == 5) {
             monFourier.donnee.CSVWrite(monRetour);
             monFourier.donnee.CSVWrite(monRetourInverse);
@@ -189,7 +188,7 @@ public class Main {
 
         JFreeChart lineChartObject = ChartFactory.createLineChart(
                 "Notre signal de départ","Valeurs échantillonées",
-                "Module des valeurs du sinus",
+                "Module des valeurs du signal",
                 line_chart_dataset, PlotOrientation.VERTICAL,
                 true,true,false);
 
