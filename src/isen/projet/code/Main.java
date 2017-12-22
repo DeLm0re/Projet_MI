@@ -36,7 +36,7 @@ public class Main {
 
         do {
             System.out.println("Choisissez votre signal :");
-            System.out.println("0. Signal incrémenté :");
+            System.out.println("0. Signal incrémenté");
             System.out.println("1. Signal unitaire constant");
             System.out.println("2. Sinus");
             System.out.println("3. Cosinus");
