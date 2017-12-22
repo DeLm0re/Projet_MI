@@ -68,7 +68,7 @@ public class Main {
                         System.out.println("e impulsion de Diract.");
                         break;
                     case 5:
-                        System.out.println(" signal importé depuis un fichier CSV. Veuillez choisir ce fichier dans la fenêtre qui s'est ouverte.");
+                        System.out.println(" signal importé depuis un fichier CSV.");
                         break;
                 }
             }
@@ -87,7 +87,7 @@ public class Main {
 
         NombreComplexe monRetour[] = new NombreComplexe[monFourier.getTaille()];
 
-        monRetour = monFourier.FFTr(signal);
+        monRetour = monFourier.FFTc(signal);
 
         System.out.println("FFT");
         for(int i = 0; i < monFourier.getTaille(); ++i)
@@ -110,8 +110,9 @@ public class Main {
             //System.out.println(i + ", " + monFourier.donnee.getSreel().length + ", " + monRetour.length);
             System.out.println(monRetour[i] + " => " + monRetourInverse[i]);
         }
-
+        System.out.println(signal);
         if(signal == 5) {
+            System.out.println("lul");
             monFourier.donnee.CSVWrite(monRetour);
             monFourier.donnee.CSVWrite(monRetourInverse);
         }

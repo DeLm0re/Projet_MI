@@ -252,7 +252,7 @@ public class Data
      */
     public boolean CSVWrite(NombreComplexe donnees[])
     {
-        if (csvFile.equals("")) {
+        if (!csvFile.equals("")) {
             String line;
             String separator = ";";
             String info[] = new String[donnees.length];
